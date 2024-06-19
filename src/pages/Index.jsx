@@ -2,7 +2,17 @@ import { Container, Text, VStack, Heading, Box, Image } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 
 const Index = () => {
-  const brands = ["Parker", "Montblanc", "Cross", "Waterman", "Sheaffer", "Lamy", "Pilot", "Uni-ball", "Bic", "Sharpie"];
+  const brands = [
+    { name: "Parker", logo: "/images/parker-logo.svg" },
+    { name: "Montblanc", logo: "/images/montblanc-logo.svg" },
+    { name: "Cross", logo: "/images/cross-logo.svg" },
+    { name: "Waterman", logo: "/images/waterman-logo.svg" },
+    { name: "Sheaffer", logo: "/images/sheaffer-logo.svg" },
+    { name: "Lamy", logo: "/images/lamy-logo.svg" },
+    { name: "Pilot", logo: "/images/pilot-logo.svg" },
+    { name: "Uni-ball", logo: "/images/uniball-logo.svg" },
+    { name: "Sharpie", logo: "/images/sharpie-logo.svg" }
+  ];
 
     const Banner = () => {
       const bannerRef = useRef(null);
@@ -28,9 +38,10 @@ const Index = () => {
       return (
         <Box ref={bannerRef} overflow="hidden" whiteSpace="nowrap" borderWidth={1} borderRadius="lg" p={4} mt={8} width="100%">
           {brands.concat(brands).map((brand, index) => (
-            <Text key={index} display="inline-block" mx={4} fontSize="lg">
-              {brand}
-            </Text>
+            <Box key={index} display="inline-block" mx={4} textAlign="center">
+              <Image src={brand.logo} alt={`${brand.name} logo`} boxSize="50px" objectFit="contain" mb={2} />
+              <Text fontSize="lg">{brand.name}</Text>
+            </Box>
           ))}
         </Box>
       );
